@@ -29,3 +29,16 @@ class Review(models.Model):
     class Meta:
         verbose_name = "Отзыв"
         verbose_name_plural = "Отзывы"
+
+
+class Contact(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField("Отзыв")
+    date = models.DateField("Время", auto_now=True)
+
+    def __str__(self):
+        return f'{self.user.username}: {self.text[:20]}...'
+
+    class Meta:
+        verbose_name = "Контакт"
+        verbose_name_plural = "Контакты"

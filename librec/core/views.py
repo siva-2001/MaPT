@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic import View
 from django.http import HttpResponseRedirect
@@ -31,11 +31,26 @@ class BookDetail(View):
         review = models.Review(
             user=user,
             text=text,
-            book=bookx
+            book=book
         )
         review.save()
 
         return HttpResponseRedirect(request.path_info)
+
+
+class Contact(View):
+    def post(self, request):
+        user = request.user
+        text = request.POST['review__text']
+
+        contact = models.Contact(
+            user=user,
+            text=text
+        )
+        contact.save()
+
+        return redirect('../books/')
+
 
 
 

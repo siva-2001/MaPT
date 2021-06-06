@@ -21,12 +21,15 @@
                        </div>
                        <nav class="nav">
                             <div id="Contact_us">
-                                <p class="window__add-h">gmail:sobaka@email.com<br>phone:666-666<br>Напишите ваше сообщение</p>
-                                <textarea name="review__text" cols="20" rows="4" class="window__add-text" placeholder="Сообщение"></textarea>
-                                <div class="window__button__container">
-                                    <a class="window__link" href=""><button class="window__add-button--cancel">Отменить</button></a>
-                                    <a class="window__link" href=""><button class="window__add-button">Отправить</button></a>
-                                </div>
+                                <form action="{% url 'contact' %}" method="post">
+                                    {% csrf_token %}
+                                    <p class="window__add-h">gmail:sobaka@email.com<br>phone:666-666<br>Напишите ваше сообщение</p>
+                                    <textarea name="review__text" cols="20" rows="4" class="window__add-text" placeholder="Сообщение"></textarea>
+                                    <div class="window__button__container">
+                                        <a class="window__link" href="#"><button class="window__add-button--cancel">Отменить</button></a>
+                                        <a class="window__link" href="#"><button class="window__add-button">Отправить</button></a>
+                                    </div>
+                                </form>
                             </div>
 
                             <a class="nav__link" href="{% url 'books' %}">Main</a>
