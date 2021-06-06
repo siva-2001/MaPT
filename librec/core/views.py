@@ -10,7 +10,7 @@ class BookListView(ListView):
 
     model = models.Book
     paginate_by = 7
-    template_name = "core/book_list.html"
+    template_name = "book_list.html"
 
 
 class BookDetail(View):
@@ -21,7 +21,7 @@ class BookDetail(View):
             "book": book,
             "reviews": reviews
         }
-        return render(request, "core/book.html", context=ctx)
+        return render(request, "book.html", context=ctx)
 
     def post(self, request, pk):
         user = request.user
@@ -31,7 +31,7 @@ class BookDetail(View):
         review = models.Review(
             user=user,
             text=text,
-            book=book
+            book=bookx
         )
         review.save()
 

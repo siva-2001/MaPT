@@ -7,7 +7,7 @@ class Book(models.Model):
     author = models.CharField("Автор", max_length=128)
     short_description = models.TextField("Краткое описание")
     description = models.TextField("Полное описание")
-    photo = models.FileField("Фото обложки", upload_to='')
+    photo = models.FileField("Фото обложки", upload_to='media/')
 
     def __str__(self):
         return f'{self.name} by {self.author}'
